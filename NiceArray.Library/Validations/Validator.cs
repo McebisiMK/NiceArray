@@ -1,8 +1,9 @@
 ﻿using NiceArray_Library.Exceptions;
 using NiceArray_Library.IValidators;
-using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using System;
 
 namespace NiceArray_Library.Validations
 {
@@ -10,27 +11,19 @@ namespace NiceArray_Library.Validations
     {
         public List<string> Validate(List<string> list)
         {
-            var invalids = GetInvalids(list);
-            if (invalids.Count > 0)
+            var invalids = list.Where(number => IsInvalid(number)).ToList();
+
+            if (invalids.Any())
             {
                 throw new InvalidNumberException(invalids);
             }
+
             return list;
         }
 
-        private List<string> GetInvalids(List<string> list)
+        private bool IsInvalid(string number)
         {
-            var invalids = new List<string>();
-            foreach (var item in list)
-            {
-                var valid = int.TryParse(item, out int n);
-                if (!valid)
-                {
-                    invalids.Add(item);
-                }
-            }
-
-            return invalids;
+            return !int.TryParse(number, out int n);
         }
     }
 }

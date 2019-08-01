@@ -22,7 +22,7 @@ namespace NiceArray_Library
 
         public bool IsNice(List<string> list)
         {
-            if (list.Count > 0)
+            if (list.Any())
             {
                 list = _validator.Validate(list);
 
