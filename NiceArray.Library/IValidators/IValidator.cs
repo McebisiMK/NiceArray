@@ -6,6 +6,6 @@ namespace NiceArray_Library.IValidators
 {
     public interface IValidator
     {
-        List<string> Validate(List<string> list);
+        IEnumerable<string> Validate(IEnumerable<string> list);
     }
 }

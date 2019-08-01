@@ -20,7 +20,7 @@ namespace NiceArray_Library
             _validator = validator;
         }
 
-        public bool IsNice(List<string> list)
+        public bool IsNice(IEnumerable<string> list)
         {
             if (list.Any())
             {
