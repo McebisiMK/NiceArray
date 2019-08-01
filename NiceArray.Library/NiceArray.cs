@@ -36,12 +36,16 @@ namespace NiceArray_Library
 
         private string Predecessor(string number)
         {
-            return (int.Parse(number) - 1).ToString();
+            var predecessor = int.Parse(number) - 1;
+            
+            return predecessor.ToString();
         }
 
         private string Successor(string number)
         {
-            return (int.Parse(number) + 1).ToString();
+            int successor = int.Parse(number) + 1;
+
+            return successor.ToString();
         }
     }
 }
