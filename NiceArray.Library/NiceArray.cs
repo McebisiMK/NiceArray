@@ -11,26 +11,37 @@ namespace NiceArray_Library
     {
         private IValidator _validator;
 
-        public NiceArray () : this ( new Validator () )
+        public NiceArray() : this(new Validator())
         {
         }
 
-        public NiceArray ( IValidator validator )
+        public NiceArray(IValidator validator)
         {
             _validator = validator;
         }
 
-        public bool IsNice ( List<string> list )
+        public bool IsNice(List<string> list)
         {
-            if ( list.Count > 0 )
+            if (list.Count > 0)
             {
-                list = _validator.Validate ( list );
+                list = _validator.Validate(list);
 
                 return list
-                        .All ( number => list.Contains ( ( int.Parse ( number ) - 1 ).ToString () ) ||
-                                          list.Contains ( ( int.Parse ( number ) + 1 ).ToString () ) );
+                        .All(number => list.Contains(Predecessor(number)) ||
+                                          list.Contains(Successor(number))
+                        );
             }
             return false;
+        }
+
+        private string Predecessor(string number)
+        {
+            return (int.Parse(number) - 1).ToString();
+        }
+
+        private string Successor(string number)
+        {
+            return (int.Parse(number) + 1).ToString();
         }
     }
 }
