@@ -11,7 +11,7 @@ namespace NiceArray_Library.Validations
     {
         public void Validate(IEnumerable<string> list)
         {
-            var invalids = list.Where(number => IsInvalid(number)).ToList();
+            var invalids = list.Where(number => IsInvalid(number));
 
             if (invalids.Any())
                 throw new InvalidNumberException(invalids);

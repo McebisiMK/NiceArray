@@ -8,7 +8,7 @@ namespace NiceArray_Library.Exceptions
     {
         static string message = "can not be converted to numbers";
 
-        public InvalidNumberException(List<string> invalids) : base($" '{string.Join(", ", invalids)}' {message}")
+        public InvalidNumberException(IEnumerable<string> invalids) : base($" '{string.Join(", ", invalids)}' {message}")
         {
         }
     }
