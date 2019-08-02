@@ -24,7 +24,7 @@ namespace NiceArray_Library
         {
             if (list.Any())
             {
-                list = _validator.Validate(list);
+                _validator.Validate(list);
 
                 return list
                         .All(number => list.Contains(Predecessor(number)) ||
@@ -37,7 +37,7 @@ namespace NiceArray_Library
         private string Predecessor(string number)
         {
             var predecessor = int.Parse(number) - 1;
-            
+
             return predecessor.ToString();
         }
 

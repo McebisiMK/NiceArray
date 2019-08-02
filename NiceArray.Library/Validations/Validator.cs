@@ -9,11 +9,12 @@ namespace NiceArray_Library.Validations
 {
     public class Validator : IValidator
     {
-        public IEnumerable<string> Validate(IEnumerable<string> list)
+        public void Validate(IEnumerable<string> list)
         {
             var invalids = list.Where(number => IsInvalid(number)).ToList();
 
-            return invalids.Any() ? throw new InvalidNumberException(invalids) : list; 
+            if (invalids.Any())
+                throw new InvalidNumberException(invalids);
         }
 
         private bool IsInvalid(string number)
